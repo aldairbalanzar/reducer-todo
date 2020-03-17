@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.todo.finished {
+  text-decoration: line-through;
+  color: greenyellow;
+}
+
+.todo {
+  color: red;
+}

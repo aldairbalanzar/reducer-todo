@@ -33,5 +33,16 @@ export const todoListReducer = (state, action) => {
                     newTodo
                 ]
             }
+        case 'CLEAR_COMPLETED':
+            return {
+                ...state,
+                todoList: state.todoList.filter(todo => {
+                    if(todo.completed === false) {
+                      return {
+                        ...todo
+                      }
+                    }
+                  })
+            }
     }
 }

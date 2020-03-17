@@ -13,6 +13,7 @@ function App() {
 
   const handleSubmit = e => {
     addTodo(e, newTodo);
+    setNewTodo('');
   }
 
   const toggleTodo = (id) => {
@@ -22,6 +23,10 @@ function App() {
   const addTodo = (e, todo) => {
     e.preventDefault();
     dispatch({ type: 'ADD_TODO', payload: todo});
+  }
+
+  const clearCompleted = () => {
+    dispatch({ type: 'CLEAR_COMPLETED'})
   }
 
   console.log(state.todoList);
@@ -36,11 +41,17 @@ function App() {
            type="text"
           />
           <button> Add Todo </button>
+          <button onClick={() => clearCompleted(state.todoList)}> Clear </button>
         </form>
         <section>
           {state.todoList.map(item => {
             return(
-              <p key={item.id} onClick={toggleTodo}>{item.name}</p>
+              <p 
+              key={item.id} 
+              onClick={() => toggleTodo(item.id)} 
+              className={`todo${item.completed ? ' finished' : ''}`}>
+                {item.name}
+              </p>
             )
           })}
         </section>
