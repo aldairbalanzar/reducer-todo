@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import { todoListReducer, initialState } from './todoListReducer';
 import './App.css';
+import './app.scss'
 
 function App() {
   const [state, dispatch] = useReducer(todoListReducer, initialState);
@@ -32,7 +33,7 @@ function App() {
   console.log(state.todoList);
 
   return (
-    <div>
+    <div className="container" >
       <h2>Welcome to your Todo App!</h2>
         <form onSubmit={handleSubmit}>
           <input

@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+
+    h2 {
+        width: 100%;
+    }
+    
+    section {
+        width: 100%;
+    }
+
+    button {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,7 +1,5 @@
 export const initialState = {
-    todoList: [],
-    completed: false,
-    id: Date.now()
+    todoList: []
 };
 
 export const todoListReducer = (state, action) => {
@@ -9,14 +7,14 @@ export const todoListReducer = (state, action) => {
         case 'TOGGLE_COMPLETED':
             return {
                 ...state,
-                todoList: state.todoList.map(todo => {
-                    if(action.payload === todo.id) {
+                todoList: state.todoList.map(item => {
+                    if(action.payload === item.id) {
                       return {
-                        ...todo,
-                        completed: !todo.completed
+                        ...item,
+                        completed: !item.completed
                       };
                     } else {
-                      return todo;
+                      return item;
                     }
                   })
             }
@@ -36,13 +34,7 @@ export const todoListReducer = (state, action) => {
         case 'CLEAR_COMPLETED':
             return {
                 ...state,
-                todoList: state.todoList.filter(todo => {
-                    if(todo.completed === false) {
-                      return {
-                        ...todo
-                      }
-                    }
-                  })
+                todoList: state.todoList.filter(item => !item.completed)
             }
     }
 }
